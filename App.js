@@ -6,7 +6,9 @@ import ContactContainer from './components/contacts/ContactContainer';
 export default function App() {
   return (
     <View style={styles.container}>
-      <ContactContainer contact={{name: "arup", email: "s@mail.com", phone: "3"}} onSetReminder={() => console.log("Hey")} />
+      <Text style={{fontSize: 100, color: "white"}} >
+        Karabi
+      </Text>
     </View>
   );
 }
@@ -14,7 +16,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'darkblue',
     alignItems: 'center',
     justifyContent: 'center',
   },
