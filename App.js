@@ -1,14 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import ContactContainer from './components/contacts/ContactContainer';
+import ContactCard from './components/contacts/ContactCard';
 
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={{fontSize: 100, color: "white"}} >
+      {/* <Text style={{fontSize: 100, color: "white"}} >
         Karabi
-      </Text>
+      </Text> */}
+      <ContactCard 
+    imageUrl="assets/favicon.png"
+    birthday="Jan 1, 2000"
+    name="John Doe"
+    location="New York, USA"
+    email="johndoe@example.com"
+    phone="+1 123 456 7890"
+/>
     </View>
   );
 }
@@ -16,7 +24,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'darkblue',
+    // backgroundColor: 'darkblue',
     alignItems: 'center',
     justifyContent: 'center',
   },
