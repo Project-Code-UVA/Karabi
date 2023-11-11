@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, TouchableOpacity } from 'react-native';
 import firebase from '../../firebaseConfig';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
@@ -32,6 +32,10 @@ function Login({ navigation }) {
             <TextInput placeholder="Email" onChangeText={setEmail} />
             <TextInput placeholder="Password" secureTextEntry onChangeText={setPassword} />
             <Button title="Log In!" onPress={handleLogin} />
+
+            <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
+                <Text>Don't have an account? Sign Up</Text>
+            </TouchableOpacity>
         </View>
     )
 }
