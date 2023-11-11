@@ -13,7 +13,7 @@ function Signup({ navigation }) {
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Account created
-                navigate('Dashboard');
+                navigation.navigate('Dashboard');
             })
             .catch((error) => {
                 const errorCode = error.code;
