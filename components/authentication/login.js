@@ -2,11 +2,25 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, TouchableOpacity } from 'react-native';
 import firebase from '../../firebaseConfig';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { navigate } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 function Login({ navigation }) {
     // Create useState variables for email and password
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    // Store the userUID in AsyncStorage
+    const setUserUID = async (userUID) => {
+        try {
+            await AsyncStorage.setItem('userUID', userUID);
+        }
+        catch (error) {
+            const errorMessage = error.message;
+            Alert.alert(errorMessage);
+        }
+    }
 
     // Function to handle the login process with firebase
     // Souce: https://firebase.google.com/docs/auth/web/start#web-modular-api
@@ -16,7 +30,9 @@ function Login({ navigation }) {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
+                const userUID = user.uid;
                 console.log(user);
+                setUserUID(userUID);
                 navigation.navigate('Dashboard');
             })
             .catch((error) => {
