@@ -11,6 +11,8 @@ const Stack = createStackNavigator(); // Instantiate a Stack Navigator
 
 export default function App() {
   return (
+    // Navigation Stack to handle routing
+    // Source: https://reactnavigation.org/docs/navigating
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Login" component={Login} />
