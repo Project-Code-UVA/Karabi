@@ -10,18 +10,18 @@ function Dashboard() {
     const [contacts, setContacts] = useState([]); // Initialize contacts state variable
 
     // Fetch contacts
-    const fetchContacts = (userUID) => {
+    async function fetchContacts(userUID) {
         const contacts = [];
         const db = getFirestore();
-        const contactsRef = collection(db, 'users', "virdO1Em3uaVd6YfGRhptFL1D133", 'contacts');
-        const querySnapshot = getDocs(contactsRef);
+        const contactsRef = collection(db, 'users', userUID, 'contacts');
+        const querySnapshot = await getDocs(contactsRef);
 
         querySnapshot.forEach((doc) => {
             contacts.push(doc.data());
         });
-
+        console.log(contacts);
         return contacts;
-    };
+    }
 
     const ContactItem = ({ contact }) => (
         <View>
